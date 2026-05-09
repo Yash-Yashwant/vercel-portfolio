@@ -256,10 +256,13 @@ function Hero() {
           }}>
             Building LLM infrastructure at production scale @novachat ai. MS Data Science @ CU Boulder.
           </p>
-          <div style={{ display: "flex", gap: "1rem" }}>
+          <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
             <a href="mailto:yashwantgandham@gmail.com" style={btnStyle("#7C3AED")}>Get in touch</a>
-            <a href="https://github.com/Yash-Yashwant" target="_blank" style={btnStyle("transparent", true)}>GitHub ↗</a>
-            <a href="https://www.linkedin.com/in/g-yashwant/" target="_blank" style={btnStyle("transparent", true)}>LinkedIn ↗</a>
+            <a href="https://github.com/Yash-Yashwant" target="_blank" rel="noopener noreferrer" style={btnStyle("transparent", true)}>GitHub ↗</a>
+            <a href="https://www.linkedin.com/in/g-yashwant/" target="_blank" rel="noopener noreferrer" style={btnStyle("transparent", true)}>LinkedIn ↗</a>
+            {process.env.NEXT_PUBLIC_RESUME_URL && (
+              <a href={process.env.NEXT_PUBLIC_RESUME_URL} target="_blank" rel="noopener noreferrer" style={btnStyle("transparent", true)}>Resume ↗</a>
+            )}
           </div>
         </div>
 
