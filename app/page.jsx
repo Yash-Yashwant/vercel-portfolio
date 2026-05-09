@@ -58,7 +58,7 @@ const PROJECTS = [
     bullets: [
       "9-agent architecture across Discovery, Targeted, and Post-Event modes — designed end-to-end",
       "500K+ chats/month at peak; $220K/month in attributable revenue across 110 creator accounts",
-      "Pinecone-backed fan memory with base + per-fan drift layers; Grok-4 for adult content reliability",
+      "Pinecone-backed fan memory with base + per-fan drift layers",
     ],
   },
   {
