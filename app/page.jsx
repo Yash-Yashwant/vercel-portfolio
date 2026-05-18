@@ -201,7 +201,7 @@ function Hero() {
   return (
     <section id="about" style={{
       minHeight: "100vh", display: "flex", flexDirection: "column",
-      justifyContent: "flex-end", padding: "0 2.5rem 6rem",
+      justifyContent: "center", padding: "0 2.5rem",
       position: "relative", overflow: "hidden",
     }}>
       {/* Grid background */}
@@ -222,6 +222,25 @@ function Hero() {
         background: "radial-gradient(circle, rgba(8,145,178,0.1) 0%, transparent 70%)",
         borderRadius: "50%", zIndex: 0,
       }} />
+      <div style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }}>
+        <div className="hero-photo" style={{
+          position: "absolute",
+          right: "max(0px, calc(50vw - 930px))",
+          top: 0,
+          bottom: 0,
+          width: "min(50vw, 720px)",
+          backgroundImage: "linear-gradient(100deg, rgba(8,8,12,0.95) 5%, rgba(8,8,12,0.45) 40%, rgba(8,8,12,0.05) 80%), url('/profile-faded.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "46% 22%",
+          backgroundRepeat: "no-repeat",
+          opacity: ready ? 0.38 : 0,
+          filter: "grayscale(20%) saturate(85%) contrast(105%)",
+          mixBlendMode: "screen",
+          WebkitMaskImage: "radial-gradient(ellipse 85% 95% at 72% 50%, rgba(0,0,0,1) 25%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0) 95%)",
+          maskImage: "radial-gradient(ellipse 85% 95% at 72% 50%, rgba(0,0,0,1) 25%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0) 95%)",
+          transition: "opacity 0.8s ease 0.35s",
+        }} />
+      </div>
 
       <div style={{ position: "relative", zIndex: 1, maxWidth: 1100 }}>
         <div style={{
@@ -293,7 +312,7 @@ function Hero() {
 function ExperienceSection() {
   const [ref, visible] = useIntersection();
   return (
-    <section id="experience" ref={ref} style={{ padding: "8rem 2.5rem", maxWidth: 1100, margin: "0 auto" }}>
+    <section id="experience" ref={ref} style={{ padding: "8rem 2.5rem", maxWidth: 1280, margin: "0 auto" }}>
       <SectionLabel label="02 / EXPERIENCE" visible={visible} />
       <h2 style={sectionHeadStyle(visible)}>Where I've<br /><em style={{ color: "#7C3AED", fontStyle: "normal" }}>shipped</em></h2>
 
@@ -360,9 +379,9 @@ function ExpCard({ exp, index, parentVisible }) {
         <div style={{ padding: "0 2rem 2rem 4.5rem" }}>
           {exp.bullets.map((b, i) => (
             <div key={i} style={{
-              display: "flex", gap: "1rem", marginBottom: "0.75rem",
-              fontFamily: "'DM Sans', sans-serif", fontSize: 15,
-              color: "rgba(255,255,255,0.65)", lineHeight: 1.6,
+              display: "flex", gap: "1rem", marginBottom: "0.9rem",
+              fontFamily: "'DM Sans', sans-serif", fontSize: 17,
+              color: "rgba(255,255,255,0.75)", lineHeight: 1.65,
             }}>
               <span style={{ color: exp.color, flexShrink: 0, marginTop: 2 }}>→</span>
               <span>{b}</span>
@@ -377,12 +396,12 @@ function ExpCard({ exp, index, parentVisible }) {
 function ProjectsSection() {
   const [ref, visible] = useIntersection();
   return (
-    <section id="projects" ref={ref} style={{ padding: "8rem 2.5rem", maxWidth: 1100, margin: "0 auto" }}>
+    <section id="projects" ref={ref} style={{ padding: "8rem 2.5rem", maxWidth: 1280, margin: "0 auto" }}>
       <SectionLabel label="03 / PROJECTS" visible={visible} />
       <h2 style={sectionHeadStyle(visible)}>Things I've<br /><em style={{ color: "#7C3AED", fontStyle: "normal" }}>built</em></h2>
 
       <div style={{
-        display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+        display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
         gap: "1.5rem", marginTop: "4rem",
       }}>
         {PROJECTS.map((p, i) => (
@@ -435,19 +454,19 @@ function ProjectCard({ project: p, index, visible }) {
       <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", marginBottom: "1.5rem" }}>
         {p.stack.map(s => (
           <span key={s} style={{
-            fontFamily: "'Space Mono', monospace", fontSize: 10,
+            fontFamily: "'Space Mono', monospace", fontSize: 12,
             color: p.accent, background: `${p.color}18`,
             border: `1px solid ${p.color}30`,
-            padding: "3px 8px", borderRadius: 4, letterSpacing: "0.05em",
+            padding: "5px 10px", borderRadius: 5, letterSpacing: "0.05em",
           }}>{s}</span>
         ))}
       </div>
 
       {p.bullets.map((b, i) => (
         <div key={i} style={{
-          display: "flex", gap: "0.75rem", marginBottom: "0.6rem",
-          fontFamily: "'DM Sans', sans-serif", fontSize: 13,
-          color: "rgba(255,255,255,0.55)", lineHeight: 1.55,
+          display: "flex", gap: "0.75rem", marginBottom: "0.85rem",
+          fontFamily: "'DM Sans', sans-serif", fontSize: 17,
+          color: "rgba(255,255,255,0.78)", lineHeight: 1.6,
         }}>
           <span style={{ color: p.color, flexShrink: 0 }}>›</span>
           <span>{b}</span>
@@ -460,7 +479,7 @@ function ProjectCard({ project: p, index, visible }) {
 function SkillsSection() {
   const [ref, visible] = useIntersection();
   return (
-    <section id="skills" ref={ref} style={{ padding: "8rem 2.5rem", maxWidth: 1100, margin: "0 auto" }}>
+    <section id="skills" ref={ref} style={{ padding: "8rem 2.5rem", maxWidth: 1280, margin: "0 auto" }}>
       <SectionLabel label="04 / SKILLS" visible={visible} />
       <h2 style={sectionHeadStyle(visible)}>My<br /><em style={{ color: "#7C3AED", fontStyle: "normal" }}>toolkit</em></h2>
 
@@ -516,7 +535,7 @@ function ContactSection() {
   const [ref, visible] = useIntersection();
   return (
     <section id="contact" ref={ref} style={{
-      padding: "8rem 2.5rem", maxWidth: 1100, margin: "0 auto",
+      padding: "8rem 2.5rem", maxWidth: 1280, margin: "0 auto",
       borderTop: "1px solid rgba(255,255,255,0.06)",
     }}>
       <SectionLabel label="05 / CONTACT" visible={visible} />
@@ -641,6 +660,9 @@ export default function Portfolio() {
         ::-webkit-scrollbar-track { background: #08080C; }
         ::-webkit-scrollbar-thumb { background: #7C3AED; border-radius: 2px; }
         ::selection { background: rgba(124,58,237,0.3); }
+        @media (max-width: 960px) {
+          .hero-photo { display: none; }
+        }
       `}</style>
       <Noise />
       <Cursor />
